@@ -1,0 +1,9 @@
+.user-settings{
+    line-height: 1.5em !important;
+    font-size: 12px !important;
+}
+.user-settings i{
+    font-size: 1.8em !important;
+    position: relative;
+    top: 3px;
+}

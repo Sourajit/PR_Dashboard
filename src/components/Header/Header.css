@@ -1,0 +1,22 @@
+.ui.card {
+  width: 100% !important; }
+
+.ui.segment {
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 20px 0 rgba(185, 188, 210, 0.2);
+  border: solid 1px #e8e8ec; }
+
+.top-header {
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #0074a6;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.8rem; }
+
+.sub-header {
+  margin-bottom: 1rem;
+  color: #0395d3 !important; }
+  .sub-header h5 {
+    font-size: 12px; }
