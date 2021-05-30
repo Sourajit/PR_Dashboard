@@ -19,8 +19,6 @@ const options = [
   },
   { key: 'profile', text: 'Your Profile' },
   { key: 'stars', text: 'Your Stars' },
-  { key: 'explore', text: 'Explore' },
-  { key: 'integrations', text: 'Integrations' },
   { key: 'help', text: 'Help' },
   { key: 'settings', text: 'Settings' },
   { key: 'sign-out', text: 'Sign Out' }
