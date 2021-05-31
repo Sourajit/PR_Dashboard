@@ -20,7 +20,6 @@ const AsyncLayout = asyncComponent(() => import('./pages/LayoutPage/Layout'));
 
 class App extends Component {
   render() {
-    debugger;
     return (
       <div className="App">
         <TopMenu />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router';
 import { Button } from 'semantic-ui-react';
 import { Grid, Segment, Dropdown } from 'semantic-ui-react';
 import './ConfigureReports.css';
@@ -77,7 +76,6 @@ class ConfigureReports extends Component {
       durationSelected: ""
     };
   }
-  debugger;
   podList = [];
   teamList = [];
   repoList = [];
@@ -109,18 +107,16 @@ class ConfigureReports extends Component {
     },[]);
   };
   submitReportsData = function(){
-    console.log("data");
-
-    debugger;
-    return "/reportsResult"+ this.props.routeParams.id;
+    window.sessionStorage.setItem("reportFilters", JSON.stringify(this.state));
+    this.props.history.push("/reportsResult" + this.props.match.params.id);
   };
   render() {
     this.headerProps = {'title': 'configure '+ getReportType[this.props.match.params.id]+' report', desc:'Configure your filters and submit to view the final report'};
     return (
       <div>
-        <Segment className="report-header">
-            <Header {...this.headerProps} />
-        </Segment>
+      <Segment className="report-header">
+          <Header {...this.headerProps} />
+      </Segment>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16}>
@@ -145,7 +141,7 @@ class ConfigureReports extends Component {
                     options={channelList.map((item)=> {return { key: item.channelId, text: item.channelName.toUpperCase(), value: item.channelId } })} 
                     onChange={this.onChangeChannel.bind(this)} />
                   <p>Repository</p>
-                  <Dropdown placeholder='Select an option' fluid selection multiple 
+                  <Dropdown placeholder='Select an option' disabled={this.state.channelSelected.length===0} fluid selection multiple 
                     options={this.repoList.map((item)=> {return { key: item, text: item.toUpperCase(), value: item }})} 
                     onChange = {(e,data)=>  this.setState({...this.state,repoSelected: data.value })} />
                   <p>Select Duration</p>
@@ -153,7 +149,7 @@ class ConfigureReports extends Component {
                    onChange = {(e,data)=>  this.setState({...this.state, durationSelected: data.value })} />
                 </div>
                 <div>
-                  <Button className="submit-btn" onClick={()=>{debugger; return this.submitReportsData.bind(this)}}>Submit</Button>
+                  <Button className="submit-btn" onClick={this.submitReportsData.bind(this)}>Submit</Button>
                 </div>
               </Segment>
           </Grid.Column>

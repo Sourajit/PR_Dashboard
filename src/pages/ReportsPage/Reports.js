@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import BarChartComponent from '../../components/Chart/BarChartComponent'
 import { Segment, Grid } from 'semantic-ui-react';
 import './Reports.css'
-import PieChartComponent from '../../components/Chart/PieChartComponent';
+import PieChartComponent from '../../components/Chart/ActivePieChartComponent';
 import Header from '../../components/Header/Header';
 
 const headerProps = {'title': 'select reports', desc:'Choose and select report from the below list'};

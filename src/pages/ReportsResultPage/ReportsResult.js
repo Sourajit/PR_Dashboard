@@ -1,36 +1,51 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BarChartComponent from '../../components/Chart/BarChartComponent'
-import { Segment, Grid } from 'semantic-ui-react';
+import { Segment, Tab, Menu, Label , Icon} from 'semantic-ui-react';
 import './ReportsResult.css'
+
+import Header from '../../components/Header/Header';
 import PieChartComponent from '../../components/Chart/PieChartComponent';
 // http://recharts.org/
 
-class Reports extends Component {
+const panes = [
+  {
+    menuItem: (
+      <Menu.Item key='chart'>
+        <Icon name='chart bar' />
+        Graphical View
+      </Menu.Item>
+    ),
+    render: () => <Tab.Pane as="div" attached={false}>Graphical View Goes Here</Tab.Pane>,
+  },
+  {
+    menuItem: (
+      <Menu.Item key='table'>
+         <Icon name='table' />
+        Tabular View
+      </Menu.Item>
+    ),
+    render: () => <Tab.Pane as="div" attached={false}>Tabular View Goes Here</Tab.Pane>,
+  },
+]
+const getReportType = {
+  ":1": "Pie Chart",
+  ":2": "Resolution Time"
+};
+class ReportsResult extends Component {
   render() {
+    this.headerProps = {'title': getReportType[this.props.match.params.id]+' report result', desc:'You can view in tabluar and graphical view and go back and search again.'};
     return (
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={8}>
-          <Link to='/configureReports:1' name='configureReports' key='configureReports'>
-              <Segment className="chart-container">
-                Pie Chart
-                <PieChartComponent /> 
-              </Segment>
-          </Link>
-          </Grid.Column>
-          <Grid.Column width={8}>
-          <Link to='/configureReports:2' name='configureReports' key='configureReports'>
-              <Segment className="chart-container">
-                Bar Chart
-                <BarChartComponent /> 
-              </Segment>
-          </Link>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <div>
+        <Segment className="report-result-header">
+          <Header {...this.headerProps} />
+        </Segment>
+        <Segment width={16} className="reports-result">
+        <Tab menu={{ color: "#0074a6", secondary: true }} panes={panes} />
+        </Segment>
+      </div>
     )
   }
 }
 
-export default Reports;
+export default ReportsResult;

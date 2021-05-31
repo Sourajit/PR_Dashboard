@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const data01 = [
@@ -9,9 +9,8 @@ const data01 = [
   { name: 'Group E', value: 189, color: '#00ff3a' },
 ];
 
-export default class PieChartComponents extends PureComponent {
 
-  render() {
+export default function PieChartComponents() {
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
@@ -32,5 +31,4 @@ export default class PieChartComponents extends PureComponent {
         </PieChart>
       </ResponsiveContainer>
     );
-  }
 }
